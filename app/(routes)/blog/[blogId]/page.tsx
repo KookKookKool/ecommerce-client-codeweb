@@ -22,7 +22,7 @@ const getBlogById = async (blogId: string) => {
   return blogs.find((blog) => blog.id === blogId) || null;
 };
 
-const BlogDetailPage = async ({ params }) => {
+const BlogDetailPage = async ({ params }: { params: { blogId: string } }) => {
   const { blogId } = params;
   const blog = await getBlogById(blogId);
 
