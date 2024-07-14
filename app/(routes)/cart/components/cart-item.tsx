@@ -1,16 +1,15 @@
-
 "use client";
 
 import Box from "@/components/box";
 import { Button } from "@/components/ui/button";
 import useCart from "@/hooks/use-carts";
-import { Products } from "@/types-db";
+import { Product } from "@/types-db"; // Correct import
 import { Trash } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
 interface CartItemProps {
-  item: Products;
+  item: Product; // Correct type
 }
 
 const CartItem = ({ item }: CartItemProps) => {
@@ -100,4 +99,3 @@ const CartItem = ({ item }: CartItemProps) => {
 };
 
 export default CartItem;
-

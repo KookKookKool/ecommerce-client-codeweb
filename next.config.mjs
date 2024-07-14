@@ -8,6 +8,9 @@ const nextConfig = {
       {
         hostname: "aceternity.com",
       },
+      {
+        hostname: "img.icons8.com", 
+      },
     ],
   },
 };

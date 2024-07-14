@@ -6,7 +6,7 @@ import Image from "next/image";
 const CardAbout = () => {
   const [isClicked, setIsClicked] = useState([false, false, false, false]);
 
-  const handleClick = (index) => {
+  const handleClick = (index: number) => { 
     const newClickedState = [...isClicked];
     newClickedState[index] = !newClickedState[index];
     setIsClicked(newClickedState);
@@ -20,7 +20,7 @@ const CardAbout = () => {
             className={`card card-${0} ${isClicked[0] ? "clicked" : ""}`}
             onClick={() => handleClick(0)}
           >
-            <Image src="/User-Centric-Design.png" alt="User-Centric-Design" width={200} height={200} />
+            <Image src="/User-Centric-Design.png" alt="User-Centric-Design" width={48} height={48} />
             <h3 className="Title1">User-Centric Design</h3>
             <p className="Title2">
               เรานำเสนอการออกแบบที่เน้นผู้ใช้ ด้วยหลักการ UX/UI Design
@@ -43,7 +43,7 @@ const CardAbout = () => {
             <Image
               src="/Customer-Satisfaction.png"
               alt="Customer-Satisfaction"
-              width={200} height={200}
+              width={48} height={48}
             />
             <h3 className="Title1">Customer Satisfaction</h3>
             <p className="Title2">
@@ -67,7 +67,7 @@ const CardAbout = () => {
             <Image
               src="/Compelling-Brand-Storytelling.png"
               alt="Compelling-Brand-Storytelling"
-              width={200} height={200}
+              width={48} height={48}
             />
             <h3 className="Title1">Compelling Brand Storytelling</h3>
             <p className="Title2">
@@ -92,7 +92,7 @@ const CardAbout = () => {
             <Image
               src="/Marketing-Strategy.png"
               alt="Marketing-Strategy"
-              width={200} height={200}
+              width={48} height={48}
             />
             <h3 className="Title1">Effective Marketing Strategy</h3>
             <p className="Title2">

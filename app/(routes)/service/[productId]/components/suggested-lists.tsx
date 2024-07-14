@@ -2,16 +2,16 @@
 
 import { useEffect, useState } from "react";
 import { PopularContent } from "@/components/popular-content";
-import { Products } from "@/types-db";
+import { Product } from "@/types-db";
 import { useParams } from "next/navigation";
 
 interface SuggestedListProps {
-  products: Products[];
+  products: Product[];
 }
 
 const SuggestedList = ({ products }: SuggestedListProps) => {
   const { productId } = useParams();
-  const [updatedProducts, setUpdatedProducts] = useState<Products[]>(products);
+  const [updatedProducts, setUpdatedProducts] = useState<Product[]>(products);
 
   const fetchUpdatedProducts = async () => {
     try {
@@ -21,10 +21,20 @@ const SuggestedList = ({ products }: SuggestedListProps) => {
           'Cache-Control': 'no-cache',
         },
       });
-      const data = await response.json();
 
-      // จัดเรียงสินค้าตามราคา
-      const sortedProducts = data.sort((a: Products, b: Products) => a.price - b.price);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data: Product[] = await response.json();
+      
+      // Verify the data structure and sorting
+      console.log('Fetched Products:', data);
+
+      const sortedProducts = data.sort((a, b) => a.price - b.price);
+
+      // Verify the sorted products
+      console.log('Sorted Products:', sortedProducts);
 
       setUpdatedProducts(sortedProducts);
     } catch (error) {
@@ -41,7 +51,7 @@ const SuggestedList = ({ products }: SuggestedListProps) => {
       <h2 className="text-3xl text-Title font-semibold">Related Products</h2>
 
       {updatedProducts.length === 0 ? (
-        <p>No Product</p>
+        <p className="text-2xl text-Title font-semibold">No Product</p>
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 gap-y-20 md:gap-y-24 my-6 py-12">
           {updatedProducts.filter(item => item.id !== productId).map(item => (

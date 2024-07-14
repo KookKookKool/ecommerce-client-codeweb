@@ -1,3 +1,4 @@
+// app/(routes)/cart/components/cart-content.tsx
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -10,7 +11,7 @@ import CartItem from "./cart-item";
 import Box from "@/components/box";
 import { Separator } from "@/components/ui/separator";
 import axios from "axios";
-import { Product, Products } from "@/types-db";
+import { Product } from "@/types-db"; // Correct import
 
 interface CartContentProps {
   userId: string | null;
@@ -21,8 +22,8 @@ const CartContent = ({ userId }: CartContentProps) => {
 
   const searchParams = useSearchParams();
 
-  const totalPrice = cart.items.reduce((total: number, item: Products) => {
-    return total + item.price * item.qty;
+  const totalPrice = cart.items.reduce((total, item: Product) => {
+    return total + Number(item.price * item.qty);
   }, 0);
 
   const formattedTotalPrice = new Intl.NumberFormat("th-TH", {
@@ -39,18 +40,17 @@ const CartContent = ({ userId }: CartContentProps) => {
     if (searchParams.get("cancel")) {
       toast.error("Something went wrong try again later !");
     }
-  }, [searchParams, cart]);
+  }, [searchParams, cart.removeAll]);
 
   const onCheckOut = async () => {
     const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
-      {
+      `${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
         products: cart.items,
         userId,
       }
     );
 
-    window.location.href = response.data.url;
+    window.location = response.data.url;
   };
 
   return (
@@ -72,7 +72,7 @@ const CartContent = ({ userId }: CartContentProps) => {
           )}
 
           <div className="w-full space-y-4">
-            {cart.items.map((item: Products) => (
+            {cart.items.map((item: Product) => (
               <CartItem key={item.id} item={item} />
             ))}
           </div>
@@ -95,9 +95,7 @@ const CartContent = ({ userId }: CartContentProps) => {
           <Box className="flex-col items-start justify-start gap-2 shadow-lg rounded-lg p-3 space-y-2 bg-background2">
             <h2 className="text-lg text-white font-semibold">Payment</h2>
             <Separator />
-            <Button className="w-full" onClick={onCheckOut}>
-              Check Out
-            </Button>
+            <Button className="w-full" onClick={onCheckOut}>Check Out</Button>
           </Box>
         </div>
       </div>
