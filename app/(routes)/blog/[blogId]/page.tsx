@@ -39,7 +39,7 @@ const BlogDetailPage = async ({ params }: { params: { blogId: string } }) => {
   return (
     <Container className="px-4 md:px-12">
       <section className="my-4 py-12">
-        <h1 className="text-5xl md:text-6xl font-bold tracking-wider uppercase text-Title my-4">
+        <h1 className="text-2xl text-center justify-center xl:text-[40px] lg:text-[38px] md:text-3xl font-bold tracking-wider uppercase text-Title my-4 ">
           {blog.label}
         </h1>
         <Image
