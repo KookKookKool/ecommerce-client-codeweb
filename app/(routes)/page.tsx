@@ -7,20 +7,20 @@ import getProducts from "@/actions/get-products";
 import { PopularContent } from "@/components/popular-content";
 import CardAbout from "@/components/card-aboutus";
 import getBlogs from "@/actions/get-blog";
-import { Blog } from "@/types-db";
+import { Blog, Product } from "@/types-db";
 import LogoCarousel from "@/components/logo-slider";
 import Image from "next/image";
 
 export const revalidate = 0;
 
 const HomePage = async () => {
-  const products = await getProducts({ isFeatured: true });
+  const products: Product[] = await getProducts({ isFeatured: true });
 
   const sortedProducts = products.sort((a, b) => a.price - b.price);
 
   const blogs: Blog[] = await getBlogs();
   // Sort blogs by creation date
-  const sortedBlogs = blogs.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+  const sortedBlogs = blogs.sort((a, b) => b.createdAt.toDate().getTime() - a.createdAt.toDate().getTime());
 
   return (
     <>
@@ -105,7 +105,7 @@ const HomePage = async () => {
                   <p className="text-base text-Title2">
                     {blog.ContentLabel.slice(0, 120)}{blog.ContentLabel.length > 120 && '...'}
                   </p>
-                  <p className="text-base text-Title3">Date Posted: {blog.createdAt.toLocaleDateString()}</p>
+                  <p className="text-base text-Title3">Date Posted: {blog.createdAt.toDate().toLocaleDateString()}</p>
                 </div>
               </Link>
             ))}

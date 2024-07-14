@@ -1,19 +1,23 @@
+// types-db.ts
+
 import { Timestamp } from "firebase/firestore/lite";
-export interface Products {
-    id: string;
-    name: string;
-    price: number;
-    Details: string;
-    DetailsInfo: string;
-    images: { url: string }[];
-    isFeatured: boolean;
-    isArchived: boolean;
-    category: string;
-    size: string;
-    kitchen: string;
-    cuisine: string;
-    qty: number;
-  }
+export interface Product {
+  id: string;
+  name: string;
+  price: number;
+  Details: string;
+  DetailsInfo: string;
+  images: { url: string }[];
+  isFeatured: boolean;
+  isArchived: boolean;
+  category: string;
+  size: string;
+  kitchen: string;
+  cuisine: string;
+  qty: number;
+}
+
+export type Products = Product[];
 
   export interface Category {
     id: string;
