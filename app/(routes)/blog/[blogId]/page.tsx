@@ -7,6 +7,7 @@ import getBlogs from "@/actions/get-blog";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
+import { Timestamp } from "firebase/firestore";
 
 export const revalidate = 0;
 
@@ -32,6 +33,9 @@ const BlogDetailPage = async ({ params }: { params: { blogId: string } }) => {
 
   const blogs: Blog[] = await getBlogs();
 
+  // แปลง createdAt เป็น Date
+  const createdAt = (blog.createdAt as Timestamp).toDate();
+
   return (
     <Container className="px-4 md:px-12">
       <section className="my-4 py-12">
@@ -53,7 +57,7 @@ const BlogDetailPage = async ({ params }: { params: { blogId: string } }) => {
             </React.Fragment>
           ))}
         </p>
-        <p className="text-base text-Title2">Date Posted: {blog.createdAt.toLocaleDateString()}</p>
+        <p className="text-base text-Title2">Date Posted: {createdAt.toLocaleDateString()}</p>
 
         <div className="text-center mt-8">
           <Link href="/blog">
