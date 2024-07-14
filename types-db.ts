@@ -1,19 +1,19 @@
 import { Timestamp } from "firebase/firestore/lite";
 
 export interface Product {
-    id: string;
-    name: string;
-    price: number;
-    Details: string;
-    DetailsInfo: string;
-    images: { url: string }[];
-    isFeatured: boolean;
-    isArchived: boolean;
-    category: string;
-    size: string;
-    kitchen: string;
-    cuisine: string;
-    qty: number;
+  id: string;
+  name: string;
+  price: number;
+  Details: string;
+  DetailsInfo: string;
+  images: { url: string }[];
+  isFeatured: boolean;
+  isArchived: boolean;
+  category: string;
+  size: string;
+  kitchen: string;
+  cuisine: string;
+  qty: number;
 }
 
 export type Products = Product[];

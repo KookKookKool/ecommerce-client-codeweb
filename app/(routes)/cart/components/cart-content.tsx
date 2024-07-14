@@ -22,7 +22,7 @@ const CartContent = ({ userId }: CartContentProps) => {
   const searchParams = useSearchParams();
 
   const totalPrice = cart.items.reduce((total: number, item: Product) => {
-    return total + Number(item.price * item.qty);
+    return total + Number(item.price) * item.qty;
   }, 0);
 
   const formattedTotalPrice = new Intl.NumberFormat("th-TH", {
@@ -43,10 +43,11 @@ const CartContent = ({ userId }: CartContentProps) => {
 
   const onCheckOut = async () => {
     const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/checkout`,{
-            products : cart.items,
-            userId,
-        }
+      `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
+      {
+        products: cart.items,
+        userId,
+      }
     );
 
     window.location.href = response.data.url;
@@ -54,51 +55,52 @@ const CartContent = ({ userId }: CartContentProps) => {
 
   return (
     <>
-    <div className="flex w-full items-center justify-between gap-4">
-      <h2 className="text-3xl font-semibold text-Title">Cart Items</h2>
-      <Button onClick={cart.removeAll} variant={"destructive"}>
-        Clear <Eraser className="h-4 w-4 ml-2" />
-      </Button>
+      <div className="flex w-full items-center justify-between gap-4">
+        <h2 className="text-3xl font-semibold text-Title">Cart Items</h2>
+        <Button onClick={cart.removeAll} variant={"destructive"}>
+          Clear <Eraser className="h-4 w-4 ml-2" />
+        </Button>
       </div>
       <div className="w-full lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-8">
         <div className="col-span-8">
-            {cart.items.length === 0 && (
-                <div className="w-full items-center flex justify-center">
-                    <p className="text-3xl text-Title2 font-semibold">
-                        No items added to cart
-                    </p>
-                </div>
-            )}
-
-            <div className="w-full space-y-4">
-                {cart.items.map((item: Product) => (
-                    <CartItem key={item.id} item={item} />
-                ))}
+          {cart.items.length === 0 && (
+            <div className="w-full items-center flex justify-center">
+              <p className="text-3xl text-Title2 font-semibold">
+                No items added to cart
+              </p>
             </div>
+          )}
+
+          <div className="w-full space-y-4">
+            {cart.items.map((item: Product) => (
+              <CartItem key={item.id} item={item} />
+            ))}
+          </div>
         </div>
         <div className="col-span-4 space-y-8">
-            <Box className="flex-col items-start gap-2 shadow-lg rounded-lg p-3 space-y-2 bg-background">
-                <h2 className="text-lg text-white font-semibold">Order Summary</h2>
-                <Separator />
+          <Box className="flex-col items-start gap-2 shadow-lg rounded-lg p-3 space-y-2 bg-background">
+            <h2 className="text-lg text-white font-semibold">Order Summary</h2>
+            <Separator />
 
-                <Box className="flex-col space-y-2">
-                <div className="flex items-center justify-between w-full px-4 whitespace-nowrap text-muted-foreground">
+            <Box className="flex-col space-y-2">
+              <div className="flex items-center justify-between w-full px-4 whitespace-nowrap text-muted-foreground">
                 <p className="text-white font-bold text-base">Total</p>
                 <p className="font-semibold text-2xl text-white">
-                {formattedTotalPrice}
+                  {formattedTotalPrice}
                 </p>
-                </div>
-                </Box>
+              </div>
             </Box>
+          </Box>
 
-            <Box className="flex-col items-start justify-start gap-2 shadow-lg rounded-lg p-3 space-y-2 bg-background2">
+          <Box className="flex-col items-start justify-start gap-2 shadow-lg rounded-lg p-3 space-y-2 bg-background2">
             <h2 className="text-lg text-white font-semibold">Payment</h2>
             <Separator />
-            <Button className="w-full" onClick={onCheckOut}>Check Out</Button>
-            </Box>
+            <Button className="w-full" onClick={onCheckOut}>
+              Check Out
+            </Button>
+          </Box>
         </div>
       </div>
-    
     </>
   );
 };
