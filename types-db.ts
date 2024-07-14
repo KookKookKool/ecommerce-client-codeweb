@@ -45,6 +45,7 @@ export interface Products {
 
   export interface Orders {
     id: string;
+    userId: string;
     name: string;
     value: string;
     isPaid : boolean;
