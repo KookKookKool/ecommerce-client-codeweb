@@ -11,6 +11,7 @@ import CartItem from "./cart-item";
 import Box from "@/components/box";
 import { Separator } from "@/components/ui/separator";
 import axios from "axios";
+import { Product } from "@/types-db";
 
 interface CartContentProps {
   userId: string | null;
@@ -21,7 +22,7 @@ const CartContent = ({ userId }: CartContentProps) => {
 
   const searchParams = useSearchParams();
 
-  const totalPrice = cart.items.reduce((total, item) => {
+  const totalPrice = cart.items.reduce((total, item: Product) => {
     return total + Number(item.price * item.qty);
   }, 0);
 
@@ -71,7 +72,7 @@ const CartContent = ({ userId }: CartContentProps) => {
             )}
 
             <div className="w-full space-y-4">
-                {cart.items.map(item => (
+                {cart.items.map((item: Product) => (
                     <CartItem key={item.id} item={item} />
                 ))}
             </div>
