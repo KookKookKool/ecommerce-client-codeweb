@@ -1,33 +1,360 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+  html,
+  body,
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    height: 100%;
+    /* overflow-x: hidden; */
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+  
+
+  /*clerk */
+  .cl-internal-11ttlho {
+    display: none !important;
+  }
+
+  .cl-internal-16mc20d {
+    display: none !important;
+  }
+
+  .cl-internal-180wb59 {
+    display: none !important;
+  }
+
+  @layer base {
+    :root {
+      --background: 0 0% 100%;
+      --foreground: 222.2 84% 4.9%;
+
+      --card: 0 0% 100%;
+      --card-foreground: 222.2 84% 4.9%;
+
+      --popover: 0 0% 100%;
+      --popover-foreground: 222.2 84% 4.9%;
+
+      --primary: 222.2 47.4% 11.2%;
+      --primary-foreground: 210 40% 98%;
+
+      --secondary: 210 40% 96.1%;
+      --secondary-foreground: 222.2 47.4% 11.2%;
+
+      --muted: 210 40% 96.1%;
+      --muted-foreground: 215.4 16.3% 46.9%;
+
+      --accent: 210 40% 96.1%;
+      --accent-foreground: 222.2 47.4% 11.2%;
+
+      --destructive: 0 84.2% 60.2%;
+      --destructive-foreground: 210 40% 98%;
+
+      --border: 214.3 31.8% 91.4%;
+      --input: 214.3 31.8% 91.4%;
+      --ring: 222.2 84% 4.9%;
+
+      --radius: 0.5rem;
+    }
+
+    .dark {
+      --background: 222.2 84% 4.9%;
+      --foreground: 210 40% 98%;
+
+      --card: 222.2 84% 4.9%;
+      --card-foreground: 210 40% 98%;
+
+      --popover: 222.2 84% 4.9%;
+      --popover-foreground: 210 40% 98%;
+
+      --primary: 210 40% 98%;
+      --primary-foreground: 222.2 47.4% 11.2%;
+
+      --secondary: 217.2 32.6% 17.5%;
+      --secondary-foreground: 210 40% 98%;
+
+      --muted: 217.2 32.6% 17.5%;
+      --muted-foreground: 215 20.2% 65.1%;
+
+      --accent: 217.2 32.6% 17.5%;
+      --accent-foreground: 210 40% 98%;
+
+      --destructive: 0 62.8% 30.6%;
+      --destructive-foreground: 210 40% 98%;
+
+      --border: 217.2 32.6% 17.5%;
+      --input: 217.2 32.6% 17.5%;
+      --ring: 212.7 26.8% 83.9%;
+    }
+  }
+
+  @layer base {
+    * {
+      @apply border-border;
+    }
+    body {
+      @apply bg-background text-foreground;
+    }
+  }
+
+  /* Pricing */
+
+  /* #pricing-card #pricing-card__top {
+    transition: all 0.6s ease;
+    transform: perspective(1000px);
+  }
+
+  #pricing-card:hover {
+    transform: perspective(1000px) scale(0.97) translateZ(10px) rotateY(-10deg);
+  }
+  #pricing-card:hover #pricing-card__top {
+    transform: perspective(1000px) translateZ(5px) scale(1.01) translateX(-15px) translateY(-10px);
+    opacity: 0.9;
+  }
+  #pricing-card:hover #pricing-card__button a {
+    transform: perspective(1000px) translateZ(5px) scale(1.01) translateX(-15px) translateY(5px);
+  } */
+
+  /* CardAbout */
+
+  .GridCards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .Title1 {
+    color: hsl(0, 0%, 100%, 0.8);
+  }
+  
+  .Title2 {
+    color: hsla(0, 0%, 100%, 0.4);
+  }
+  
+  .card-container {
+    display: flex;
+    perspective: 50em;
+    margin-right: 6%;
+    margin-left: 6%;
+    margin-bottom: 12%;
+    justify-content: center;
+    align-items: center;
+    max-width: 380px;
+  }
+  
+  .Card:nth-child(n + 3) {
+    flex-basis: calc(80% - 10px); /* ลด flex-basis เพื่อให้เหลือ 50% ของพื้นที่ทั้งหมด */
+  }
+  
+  .card-container:nth-child(1) {
+    --bi: linear-gradient(to bottom right, #191a1e, #121316);
+  }
+  
+  .card-container:nth-child(2) {
+    --bi: linear-gradient(to bottom right, #191a1e, #121316);
+  }
+  
+  .card-container:nth-child(3) {
+    --bi: linear-gradient(to bottom right, #191a1e, #121316);
+  }
+  
+  .card-container:nth-child(4) {
+    --bi: linear-gradient(to bottom right, #191a1e, #121316);
+  }
+  
+  .card-container:nth-child(5) {
+    --bi: linear-gradient(to bottom right, #191a1e, #121316);
+  }
+  
+  .card {
+    position: relative;
+    width: 320px;
+    padding: 3em;
+    flex: 1;
+    color: #fff;
+    transform: rotateY(320deg) rotateX(30deg) rotateZ(2deg) translateX(-9%);;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease-in-out;
+    
+  
+  }
+  
+  .card:hover {
+    transform: translate3d(0, 0, 0);
+  }
+  
+  
+  
+  .layers {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    z-index: -1;
+  }
+  
+  .layer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 1em;
+    background-image: var(--bi);
+    transform: translateZ(var(--tz));
+  
+  }
+  
+  .layer:nth-child(1) {
+    --tz: 0px;
+    box-shadow: 0 0 0.5em #000 inset;
+  }
+  
+  .layer:nth-child(2) {
+    --tz: -4px;
+    box-shadow: 0 0 0.5em #000 inset;
+  }
+  
+  .layer:nth-child(3) {
+    --tz: -8px;
+    box-shadow: 0 0 0.5em #000 inset;
+  }
+  
+  .layer:nth-child(4) {
+    --tz: -12px;
+    box-shadow: 0 0 0.5em #000 inset;
+  }
+  
+  .layer:nth-child(5) {
+    --tz: -16px;
+    box-shadow: 0 0 0.5em #000 inset;
+  }
+  
+  .layer:nth-child(6) {
+    --tz: -20px;
+    box-shadow: 0 0 0.5em #000 inset;
+  }
+  
+  .layer:nth-child(7) {
+    --tz: -24px;
+    box-shadow: 0 0 0.5em #000 inset;
+  }
+  
+  .layer:nth-child(8) {
+    --tz: -28px;
+    box-shadow: 0 0 0.5em #000 inset;
+  }
+  
+  .layer:nth-child(9) {
+    --tz: -32px;
+    box-shadow: 0 0 0.5em #000 inset;
+  }
+  
+  .layer:nth-child(10) {
+    --tz: -36px;
+    box-shadow: 0 0 0.5em #000 inset;
+  }
+  
+  .layer:nth-child(11) {
+    --tz: -40px;
+    box-shadow: 0 0 0.5em #000 inset;
+  }
+  
+  .layer:nth-child(12) {
+    --tz: -38px;
+    box-shadow: 0 0 0.5em #000 inset;
+  }
+  
+  .layer:last-child {
+    background-color: linear-gradient(to bottom right, #191a1e, #121316);
+    box-shadow: 0 0 0.5em #000 inset, 25px 25px 25px 5px rgba(0, 0, 0, 0.5);
+    
+  }
+  
+  .Iconclick {
+    text-align: end;
+  }
+
+
+  /* footer */
+.footer{
+  background:#000;
+  padding:30px 0px;
+  font-family: 'Roboto', sans-serif;
+  text-align:center;
+  }
+
+  .row {
+    gap: 16px;
+    margin-left: 0px!important;
+  }
+  
+  .footer .row{
+    display: flex;
+    justify-content: center;
+    width:100%;
+    color:gray;
+    font-size:0.8em;
+    }
+  
+  .footer .row a{
+  text-decoration:none;
+  color:gray;
+  transition:0.5s;
+  }
+  
+  .footer .row a:hover{
+  color:#fff;
+  }
+  
+  .footer .row ul{
+  width:100%;
+  padding-inline-end: 40px;
+  }
+  
+  .footer .row ul li{
+  display:inline-block;
+  margin:0px 30px;
+  }
+  
+  .footer .row a i{
+  font-size:2em;
+  margin:0% 1%;
+  }
+
+  .IconFooter {
+    width: 40px;
+  }
+  
+  @media (max-width:768px){
+  .footer{
+  text-align:left;
+  padding:5%;
+  }
+  .footer .row ul li{
+  display:block;
+  margin:10px 0px;
+  text-align:left;
+  }
+  .footer .row a i{
+  margin:0% 3%;
+  }
+  }
+
+
+  /* เพิ่มในไฟล์ CSS หลักของคุณ เช่น globals.css */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+input[type='number'] {
+  -moz-appearance: textfield;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
