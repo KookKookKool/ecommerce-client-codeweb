@@ -10,7 +10,7 @@ import CartItem from "./cart-item";
 import Box from "@/components/box";
 import { Separator } from "@/components/ui/separator";
 import axios from "axios";
-import { Product } from "@/types-db";
+import { Product, Products } from "@/types-db";
 
 interface CartContentProps {
   userId: string | null;
@@ -21,8 +21,8 @@ const CartContent = ({ userId }: CartContentProps) => {
 
   const searchParams = useSearchParams();
 
-  const totalPrice = cart.items.reduce((total: number, item: Product) => {
-    return total + Number(item.price) * item.qty;
+  const totalPrice = cart.items.reduce((total: number, item: Products) => {
+    return total + item.price * item.qty;
   }, 0);
 
   const formattedTotalPrice = new Intl.NumberFormat("th-TH", {
@@ -72,7 +72,7 @@ const CartContent = ({ userId }: CartContentProps) => {
           )}
 
           <div className="w-full space-y-4">
-            {cart.items.map((item: Product) => (
+            {cart.items.map((item: Products) => (
               <CartItem key={item.id} item={item} />
             ))}
           </div>
