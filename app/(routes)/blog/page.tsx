@@ -5,14 +5,20 @@ import Link from "next/link";
 import getBlog from "@/actions/get-blog";
 import { Blog } from "@/types-db";
 import Image from "next/image";
+import { Timestamp } from "firebase/firestore";
 
 export const revalidate = 0;
 
 const AllBlogsPage = async () => {
   const blogs: Blog[] = await getBlog();
 
-  // Sort blogs by creation date
-  const sortedBlogs = blogs.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+  // Convert createdAt to Date and sort blogs by creation date
+  const sortedBlogs = blogs
+    .map(blog => ({
+      ...blog,
+      createdAt: (blog.createdAt as Timestamp).toDate()
+    }))
+    .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
 
   return (
     <Container className="px-4 md:px-12">
