@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { PopularContent } from "@/components/popular-content";
-import { Product } from "@/types-db";
+import { Product } from "@/types-db"; 
 import { useParams } from "next/navigation";
 
 interface SuggestedListProps {
@@ -27,14 +27,7 @@ const SuggestedList = ({ products }: SuggestedListProps) => {
       }
 
       const data: Product[] = await response.json();
-      
-      // Verify the data structure and sorting
-      console.log('Fetched Products:', data);
-
       const sortedProducts = data.sort((a, b) => a.price - b.price);
-
-      // Verify the sorted products
-      console.log('Sorted Products:', sortedProducts);
 
       setUpdatedProducts(sortedProducts);
     } catch (error) {
@@ -51,7 +44,7 @@ const SuggestedList = ({ products }: SuggestedListProps) => {
       <h2 className="text-3xl text-Title font-semibold">Related Products</h2>
 
       {updatedProducts.length === 0 ? (
-        <p className="text-2xl text-Title font-semibold">No Product</p>
+        <p>No Product</p>
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 gap-y-20 md:gap-y-24 my-6 py-12">
           {updatedProducts.filter(item => item.id !== productId).map(item => (
@@ -64,6 +57,3 @@ const SuggestedList = ({ products }: SuggestedListProps) => {
 };
 
 export default SuggestedList;
-
-// server-side code
-export const revalidate = 0;
