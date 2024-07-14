@@ -1,4 +1,5 @@
 import { Blog } from "@/types-db";
+import { Timestamp } from "firebase/firestore";
 
 const URL = `${process.env.NEXT_PUBLIC_API_URL}/blog`;
 
@@ -12,10 +13,13 @@ const getBlog = async (): Promise<Blog[]> => {
 
   // Convert createdAt to JavaScript Date objects
   return blogs.map(blog => {
-    const createdAt = blog.createdAt?.seconds ? new Date(blog.createdAt.seconds * 1000) : new Date(blog.createdAt);
+    const createdAt = (blog.createdAt as unknown as { seconds: number }).seconds 
+      ? new Date((blog.createdAt as unknown as { seconds: number }).seconds * 1000)
+      : new Date(blog.createdAt as unknown as string);
+    
     return {
       ...blog,
-      createdAt,
+      createdAt: Timestamp.fromDate(createdAt),  // Convert back to Timestamp
     };
   });
 };

@@ -62,5 +62,5 @@ export interface Products {
     label: string;
     ContentLabel: string;
     imageUrl: string;
-    createdAt?: Timestamp;
+    createdAt: Timestamp;
 }
