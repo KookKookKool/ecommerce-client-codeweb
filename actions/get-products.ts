@@ -9,6 +9,7 @@ interface Query {
     cuisine?: string;
     category?: string;
     kitchen?: string;
+    isArchived?: boolean; // Add this line
 }
 
 const getProducts = async (query: Query): Promise<Products> => {
@@ -18,6 +19,7 @@ const getProducts = async (query: Query): Promise<Products> => {
         cuisine: query.cuisine,
         category: query.category,
         kitchen: query.kitchen,
+        isArchived: query.isArchived, // Add this line
     });
 
     const url = `${URL}?${queryString}`;

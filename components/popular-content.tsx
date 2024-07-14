@@ -26,7 +26,7 @@ export const PopularContent = ({ data }: PopularContentProps) => {
   };
 
   return (
-    <div className="w-full lg:w-[100%] min-w-[280px] px-10 pt-16 pb-8 bg-background2 rounded-lg self-stretch hover:scale-105 hover:shadow-[0px_14px_28px_-5px_rgba(0,0,0,0.1)] transition-all duration-150 ease-in">
+    <div className="flex flex-col w-full lg:w-[100%] min-w-[280px] px-6 pt-16 pb-8 bg-background2 items-center rounded-lg self-stretch hover:scale-105 hover:shadow-[0px_14px_28px_-5px_rgba(0,0,0,0.1)] transition-all duration-150 ease-in">
       <Link href={`/service/${data.id}`}>
         <h2 className="text-center font-semibold text-lg tracking-wider text-Title mb-3 drop-shadow-[3px_3px_5px_rgba(91,91,91,0.58)] hover:text-primary">
           {data.name}
@@ -55,7 +55,7 @@ export const PopularContent = ({ data }: PopularContentProps) => {
           )}
         </div>
       </ol>
-      <CardDescription className="text-left text-[16px] text-Title2 text-wrap px-2 my-3 w-[14rem] tracking-wider">
+      <CardDescription className="text-left text-[16px] text-Title2 pl-[1.5rem] pr-[0.5rem] text-wrap my-3 w-[17rem] tracking-wider">
         {data.Details.split("\n").map((line, index) => (
           <React.Fragment key={index}>
             {line}

@@ -45,6 +45,9 @@ const ProductPage = async ({ params }: ProductPageProps) => {
 
   const suggestedProducts: Product[] = await getProducts({ category: product.category });
 
+  // Filter out archived products
+  const activeSuggestedProducts = suggestedProducts.filter(p => !p.isArchived);
+
   return (
     <div>
       <Container className="bg-background rounded-lg my-4 px-4">
@@ -68,7 +71,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
               <Info product={product} />
             </div>
           </div>
-          <SuggestedList products={suggestedProducts} />
+          <SuggestedList products={activeSuggestedProducts} />
         </div>
       </Container>
     </div>

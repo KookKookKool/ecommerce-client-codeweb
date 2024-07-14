@@ -16,7 +16,10 @@ export const revalidate = 0;
 const HomePage = async () => {
   const products: Product[] = await getProducts({ isFeatured: true });
 
-  const sortedProducts = products.sort((a, b) => a.price - b.price);
+  // Filter out archived products
+  const activeProducts = products.filter(product => !product.isArchived);
+
+  const sortedProducts = activeProducts.sort((a, b) => a.price - b.price);
 
   const blogs: Blog[] = await getBlogs();
   // Sort blogs by creation date
@@ -57,7 +60,7 @@ const HomePage = async () => {
 
         {/* Feature */}
         <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 gap-y-20 md:gap-12 my-4 mx-4 py-12">
-          {sortedProducts.slice(0, 4).map((item) => (
+          {sortedProducts.slice(0, 99).map((item) => (
             <PopularContent key={item.id} data={item} />
           ))}
         </section>

@@ -15,39 +15,49 @@ interface ServiceProps {
     searchParams: {
         size?: string;
         isFeatured?: boolean;
+        isArchived?: boolean;
         cuisine?: string;
         category?: string;
         kitchen?: string;
     };
 }
 
-const ServicePage = async ({searchParams} : ServiceProps) => {
+const ServicePage = async ({ searchParams }: ServiceProps) => {
     const categories = await getCategories();
     const sizes = await getSizes();
 
     const products = await getProducts({
-        size : searchParams?.size,
-        isFeatured : searchParams?.isFeatured,
-        category : searchParams?.category,
+        size: searchParams?.size,
+        isFeatured: searchParams?.isFeatured,
+        category: searchParams?.category,
+        isArchived: searchParams?.isArchived,
     });
 
-    const sortedProducts = products.sort((a, b) => a.price - b.price);
+    // Filter products based on isArchived status
+    const filteredProducts = products.filter(product => {
+        if (searchParams?.isArchived) {
+            return product.isArchived === searchParams.isArchived;
+        }
+        return !product.isArchived;
+    });
 
-  return (
-    <Container className='px-4 md:px-12 '>
-        <div className='grid grid-cols-1 md:grid-cols-12 py-12 gap-2 '>
-            <div className='hidden md:block col-span-2 border-r border-gray-100 top-24'>
-                <FilterContainer>
-                    <CategoryFilters categories={categories} />
-                    <SizesFilter sizes={sizes} />
-                </FilterContainer>
+    const sortedProducts = filteredProducts.sort((a, b) => a.price - b.price);
+
+    return (
+        <Container className='px-4 md:px-12 '>
+            <div className='grid grid-cols-1 md:grid-cols-12 py-12 gap-2 '>
+                <div className='hidden md:block col-span-2 border-r border-gray-100 top-24'>
+                    <FilterContainer>
+                        <CategoryFilters categories={categories} />
+                        <SizesFilter sizes={sizes} />
+                    </FilterContainer>
+                </div>
+                <Box className='col-span-12 md:col-span-10 flex-col w-full'>
+                    <PageContent products={sortedProducts} />
+                </Box>
             </div>
-            <Box className='col-span-12 md:col-span-10 flex-col w-full'>
-                <PageContent products={products} />
-            </Box>
-        </div>
-    </Container>
-  )
+        </Container>
+    );
 }
 
 export default ServicePage;

@@ -11,7 +11,13 @@ interface SuggestedListProps {
 
 const SuggestedList = ({ products }: SuggestedListProps) => {
   const { productId } = useParams();
-  const [updatedProducts, setUpdatedProducts] = useState<Product[]>(products);
+
+  // Sort the initial products prop by price
+  const sortedInitialProducts = products
+    .filter(product => !product.isArchived)
+    .sort((a, b) => a.price - b.price);
+
+  const [updatedProducts, setUpdatedProducts] = useState<Product[]>(sortedInitialProducts);
 
   const fetchUpdatedProducts = async () => {
     try {
@@ -27,7 +33,10 @@ const SuggestedList = ({ products }: SuggestedListProps) => {
       }
 
       const data: Product[] = await response.json();
-      const sortedProducts = data.sort((a, b) => a.price - b.price);
+
+      // Filter out archived products and sort by price
+      const filteredProducts = data.filter(product => !product.isArchived);
+      const sortedProducts = filteredProducts.sort((a, b) => a.price - b.price);
 
       setUpdatedProducts(sortedProducts);
     } catch (error) {
@@ -57,3 +66,5 @@ const SuggestedList = ({ products }: SuggestedListProps) => {
 };
 
 export default SuggestedList;
+
+export const revalidate = 0;
