@@ -20,6 +20,7 @@ export const revalidate = 0;
 
 const ProductPage = async ({ params }: ProductPageProps) => {
   const product: Product | null = await getProduct(params.productId);
+  
   if (!product) {
     return (
       <div>
