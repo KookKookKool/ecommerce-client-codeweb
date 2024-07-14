@@ -20,6 +20,9 @@ export interface Products {
     billboardId: string;
     billboardLabel: string;
     name: string;
+    createdAt?: Timestamp;
+    updatedAt?: Timestamp;
+    imageUrl?: string;
   }
 
   export interface Size {
@@ -42,12 +45,16 @@ export interface Products {
 
   export interface Orders {
     id: string;
-    isPaid: boolean;
-    phone: string;
-    orderItems: Products[];
-    address: string;
-    order_status: string;
-    userId: string;
+    name: string;
+    value: string;
+    isPaid : boolean;
+    phone : string;
+    customerName: string, 
+    orderItems : Products[];
+    address : string;
+    order_status : string;
+    createdAt?: Timestamp;
+    updatedAt?: Timestamp;
   }
 
   export interface Blog {
