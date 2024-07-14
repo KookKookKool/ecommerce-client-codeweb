@@ -1,3 +1,4 @@
+// app/(routes)/page-content.tsx
 "use client";
 
 import Box from "@/components/box";
@@ -62,6 +63,7 @@ const PageContent = ({ products }: PageContentProps) => {
             {currentParams &&
               Object.entries(currentParams).map(([key, value]) => (
                 <div
+                  key={key} // Add key prop
                   onClick={() => handleClick(key)}
                   className="px-4 py-1 cursor-pointer hover:shadow-md rounded-md bg-emerald-500/10 text-Title2 flex items-center gap-1"
                 >
@@ -75,11 +77,11 @@ const PageContent = ({ products }: PageContentProps) => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 gap-y-20 md:gap-12 my-4 mx-4">
         {products.length > 0 ? (
-          <>{
-            products.map(product => (
-                <PopularContent data={product} key={product.id}/>
-            ))
-          }</>
+          <>
+            {products.map(product => (
+              <PopularContent data={product} key={product.id}/>
+            ))}
+          </>
         ) : (
           <>
             <Box className="items-center justify-center py-12 text-muted-foreground text-xl font-bold col-span-10">

@@ -1,5 +1,7 @@
+// components\card-aboutus.tsx
 "use client";
 import React, { useState } from "react";
+import Image from "next/image";
 
 const CardAbout = () => {
   const [isClicked, setIsClicked] = useState([false, false, false, false]);
@@ -18,7 +20,7 @@ const CardAbout = () => {
             className={`card card-${0} ${isClicked[0] ? "clicked" : ""}`}
             onClick={() => handleClick(0)}
           >
-            <img src="./User-Centric-Design.png" alt="User-Centric-Design" />
+            <Image src="/User-Centric-Design.png" alt="User-Centric-Design" width={200} height={200} />
             <h3 className="Title1">User-Centric Design</h3>
             <p className="Title2">
               เรานำเสนอการออกแบบที่เน้นผู้ใช้ ด้วยหลักการ UX/UI Design
@@ -38,9 +40,10 @@ const CardAbout = () => {
             className={`card card-${1} ${isClicked[1] ? "clicked" : ""}`}
             onClick={() => handleClick(1)}
           >
-            <img
-              src="./Customer-Satisfaction.png"
+            <Image
+              src="/Customer-Satisfaction.png"
               alt="Customer-Satisfaction"
+              width={200} height={200}
             />
             <h3 className="Title1">Customer Satisfaction</h3>
             <p className="Title2">
@@ -61,9 +64,10 @@ const CardAbout = () => {
             className={`card card-${2} ${isClicked[2] ? "clicked" : ""}`}
             onClick={() => handleClick(2)}
           >
-            <img
-              src="./Compelling-Brand-Storytelling.png"
+            <Image
+              src="/Compelling-Brand-Storytelling.png"
               alt="Compelling-Brand-Storytelling"
+              width={200} height={200}
             />
             <h3 className="Title1">Compelling Brand Storytelling</h3>
             <p className="Title2">
@@ -85,7 +89,11 @@ const CardAbout = () => {
             className={`card card-${3} ${isClicked[3] ? "clicked" : ""}`}
             onClick={() => handleClick(3)}
           >
-            <img src="./Marketing-Strategy.png" alt="Marketing-Strategy" />
+            <Image
+              src="/Marketing-Strategy.png"
+              alt="Marketing-Strategy"
+              width={200} height={200}
+            />
             <h3 className="Title1">Effective Marketing Strategy</h3>
             <p className="Title2">
               ทีมของเรามีความเชี่ยวชาญในการผสมผสานรูปแบบการสร้างเว็บไซต์และกลยุทธ์การตลาด

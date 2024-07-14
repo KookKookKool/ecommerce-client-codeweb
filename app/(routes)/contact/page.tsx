@@ -1,3 +1,4 @@
+// app/(routes)/contact/page.tsx
 "use client";
 
 import { useState, Fragment } from "react";
@@ -234,7 +235,7 @@ function ContactForm() {
             type="submit"
             className="block w-full rounded-md bg-primary px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
           >
-            Let's talk
+            Let&apos;s talk
           </button>
         </div>
       </form>

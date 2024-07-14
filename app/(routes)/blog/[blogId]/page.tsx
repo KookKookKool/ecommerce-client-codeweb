@@ -1,5 +1,4 @@
-
-
+// [blogId]/page.tsx
 import React from "react";
 import { notFound } from "next/navigation";
 import Container from "@/components/container";
@@ -7,6 +6,7 @@ import { Blog } from "@/types-db";
 import getBlogs from "@/actions/get-blog";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 
 export const revalidate = 0;
 
@@ -38,9 +38,11 @@ const BlogDetailPage = async ({ params }) => {
         <h1 className="text-5xl md:text-6xl font-bold tracking-wider uppercase text-Title my-4">
           {blog.label}
         </h1>
-        <img
+        <Image
           src={blog.imageUrl}
           alt={blog.label}
+          width={1200} // Adjust accordingly
+          height={800} // Adjust accordingly
           className="w-full h-[100%] object-cover rounded-md mb-8"
         />
         <p className="text-lg text-Title2">
@@ -68,9 +70,11 @@ const BlogDetailPage = async ({ params }) => {
             {blogs.slice(0, 3).map((blog) => (
               <Link href={`/blog/${blog.id}`} key={blog.id}>
                 <div className="p-4 border rounded-lg cursor-pointer">
-                  <img
+                  <Image
                     src={blog.imageUrl}
                     alt={blog.label}
+                    width={400} // Adjust accordingly
+                    height={300} // Adjust accordingly
                     className="w-full h-48 object-cover rounded-md mb-4"
                   />
                   <h3 className="text-2xl font-bold mb-2">{blog.label}</h3>

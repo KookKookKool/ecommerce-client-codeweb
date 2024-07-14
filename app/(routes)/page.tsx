@@ -1,3 +1,4 @@
+// app/(routes)/page.tsx
 import Spline from "@splinetool/react-spline/next";
 import Container from "@/components/container";
 import { Button } from "@/components/ui/button";
@@ -8,7 +9,7 @@ import CardAbout from "@/components/card-aboutus";
 import getBlogs from "@/actions/get-blog";
 import { Blog } from "@/types-db";
 import LogoCarousel from "@/components/logo-slider";
-
+import Image from "next/image";
 
 export const revalidate = 0;
 
@@ -21,14 +22,12 @@ const HomePage = async () => {
   // Sort blogs by creation date
   const sortedBlogs = blogs.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
 
-
-  
   return (
     <>
       <Container className="px-4 md:px-12 overflow-x-hidden">
         <section className="my-4 py-4 sm:py-12 flex flex-col items-center justify-center mx-4">
           <h2 className="text-2xl text-center justify-center xl:text-[40px] lg:text-[38px] md:text-3xl font-bold tracking-wider uppercase text-Title my-4 ">
-          "สร้างเว็บไซต์ที่ดึงดูดผู้ใช้ และเต็มไปด้วยความคิดสร้างสรรค์"
+          &quot;สร้างเว็บไซต์ที่ดึงดูดผู้ใช้ และเต็มไปด้วยความคิดสร้างสรรค์&quot;
           </h2>
           <p className="w-full text-center xl:text-[20px] lg:text-[18px] text-base tracking-wide text-Title2 my-2">
           เพิ่มโอกาสทางธุรกิจด้วยดีไซน์ UI/UX ที่ยอดเยี่ยม พร้อมกลยุทธ์การตลาดที่เหนือกว่า
@@ -69,7 +68,7 @@ const HomePage = async () => {
             ทำไมต้องโค้ดเว็บ ?
           </h2>
           <p className="w-full text-center xl:text-[20px] lg:text-[18px] px-8 tracking-wide text-Title2">
-          "เพราะโค้ดเว็บมุ่งเน้นการสร้างเว็บไซต์ที่ไม่เพียงแค่สวยงาม แต่ยังใช้งานง่าย สะดวกสบายต่อผู้ใช้ทุกคน ด้วยดีไซน์ที่สร้างความประทับใจแรก พร้อมกับฟังก์ชันที่ตอบสนองทุกความต้องการของธุรกิจคุณ ให้ธุรกิจของคุณโดดเด่นในโลกดิจิทัลและเพิ่มประสิทธิภาพการทำงานอย่างแท้จริง".{" "}
+          &quot;เพราะโค้ดเว็บมุ่งเน้นการสร้างเว็บไซต์ที่ไม่เพียงแค่สวยงาม แต่ยังใช้งานง่าย สะดวกสบายต่อผู้ใช้ทุกคน ด้วยดีไซน์ที่สร้างความประทับใจแรก พร้อมกับฟังก์ชันที่ตอบสนองทุกความต้องการของธุรกิจคุณ ให้ธุรกิจของคุณโดดเด่นในโลกดิจิทัลและเพิ่มประสิทธิภาพการทำงานอย่างแท้จริง&quot;.{" "}
           </p>
         </section>
 
@@ -101,7 +100,7 @@ const HomePage = async () => {
             {sortedBlogs.slice(0, 3).map((blog) => (
               <Link href={`/blog/${blog.id}`} key={blog.id}>
                 <div className="p-4 border rounded-lg cursor-pointer">
-                  <img src={blog.imageUrl} alt={blog.label} className="w-full h-48 object-cover rounded-md mb-4" />
+                  <Image src={blog.imageUrl} alt={blog.label} width={400} height={300} className="w-full h-48 object-cover rounded-md mb-4" />
                   <h3 className="text-2xl font-bold mb-2">{blog.label}</h3>
                   <p className="text-base text-Title2">
                     {blog.ContentLabel.slice(0, 120)}{blog.ContentLabel.length > 120 && '...'}
@@ -112,8 +111,6 @@ const HomePage = async () => {
             ))}
           </div>
         </section>
-
- 
 
       </Container>
     </>

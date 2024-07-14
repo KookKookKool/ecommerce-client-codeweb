@@ -1,4 +1,4 @@
-
+// app/(routes)/cart/components/cart-content.tsx
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -39,7 +39,7 @@ const CartContent = ({ userId }: CartContentProps) => {
     if (searchParams.get("cancel")) {
       toast.error("Something went wrong try again later !");
     }
-  }, [searchParams, cart.removeAll]);
+  }, [searchParams, cart]);
 
   const onCheckOut = async () => {
     const response = await axios.post(
@@ -49,7 +49,7 @@ const CartContent = ({ userId }: CartContentProps) => {
         }
     );
 
-    window.location = response.data.url;
+    window.location.href = response.data.url;
   };
 
   return (
