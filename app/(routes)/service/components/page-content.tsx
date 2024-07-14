@@ -1,16 +1,15 @@
-// app/(routes)/page-content.tsx
 "use client";
 
 import Box from "@/components/box";
 import { PopularContent } from "@/components/popular-content";
-import { Products } from "@/types-db";
+import { Product } from "@/types-db";
 import { ChevronRight, Home, X } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import qs from "query-string";
 
 interface PageContentProps {
-  products: Products[];
+  products: Product[];
 }
 
 const PageContent = ({ products }: PageContentProps) => {
@@ -29,6 +28,7 @@ const PageContent = ({ products }: PageContentProps) => {
       router.push(href);
     }
   };
+
   return (
     <div className="pb-28">
       <Box className="pt-4 pb-[2rem] flex-col">
@@ -63,7 +63,7 @@ const PageContent = ({ products }: PageContentProps) => {
             {currentParams &&
               Object.entries(currentParams).map(([key, value]) => (
                 <div
-                  key={key} // Add key prop
+                  key={key}
                   onClick={() => handleClick(key)}
                   className="px-4 py-1 cursor-pointer hover:shadow-md rounded-md bg-emerald-500/10 text-Title2 flex items-center gap-1"
                 >
