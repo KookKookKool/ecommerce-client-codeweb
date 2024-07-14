@@ -22,7 +22,7 @@ const CartContent = ({ userId }: CartContentProps) => {
 
   const searchParams = useSearchParams();
 
-  const totalPrice = cart.items.reduce((total, item: Product) => {
+  const totalPrice = cart.items.reduce((total: number, item: Product) => {
     return total + Number(item.price * item.qty);
   }, 0);
 
