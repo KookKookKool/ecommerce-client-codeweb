@@ -58,7 +58,7 @@ function ContactForm() {
     // Execute reCAPTCHA
     const token = await executeRecaptcha("contact_form");
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_FORM}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_FORM_}`, {
       method: "POST",
       cache: "no-cache",
       headers: {
