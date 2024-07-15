@@ -111,18 +111,20 @@ function ContactForm() {
             >
               First name
             </label>
+
             <div className="mt-2.5">
               <input
                 id="firstName"
                 name="firstName"
                 type="text"
                 autoComplete="given-name"
-                className="block w-full rounded-md border-0 bg-background2 px-3.5 py-2 text-Title2 shadow-sm ring-1 ring-background focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-2 border-white bg-background2 px-3.5 py-2 text-Title2 shadow-sm ring-1 ring-background focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                 value={formData.firstName}
                 onChange={handleChange}
                 required
               />
             </div>
+
           </div>
           <div>
             <label
@@ -137,7 +139,7 @@ function ContactForm() {
                 name="lastName"
                 type="text"
                 autoComplete="family-name"
-                className="block w-full rounded-md border-0 bg-background2 px-3.5 py-2 text-Title2 shadow-sm ring-1 ring-background focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-2 border-white bg-background2 px-3.5 py-2 text-Title2 shadow-sm ring-1 ring-background focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                 value={formData.lastName}
                 onChange={handleChange}
                 required
@@ -157,7 +159,7 @@ function ContactForm() {
                 name="email"
                 type="email"
                 autoComplete="email"
-                className="block w-full rounded-md border-0 bg-background2 px-3.5 py-2 text-Title2 shadow-sm ring-1 ring-background focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-2 border-white bg-background2 px-3.5 py-2 text-Title2 shadow-sm ring-1 ring-background focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                 value={formData.email}
                 onChange={handleChange}
                 required
@@ -177,7 +179,7 @@ function ContactForm() {
                 name="phoneNumber"
                 type="tel"
                 autoComplete="tel"
-                className="block w-full rounded-md border-0 bg-background2 px-3.5 py-2 text-Title2 shadow-sm ring-1 ring-background focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-2 border-white bg-background2 px-3.5 py-2 text-Title2 shadow-sm ring-1 ring-background focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                 value={formData.phoneNumber}
                 onChange={handleChange}
               />
@@ -195,7 +197,7 @@ function ContactForm() {
                 id="message"
                 name="message"
                 rows={4}
-                className="block w-full rounded-md border-0 bg-background2 px-3.5 py-2 text-Title2 shadow-sm ring-1 ring-background focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-2 border-white bg-background2 px-3.5 py-2 text-Title2 shadow-sm ring-1 ring-background focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                 value={formData.message}
                 onChange={handleChange}
                 required

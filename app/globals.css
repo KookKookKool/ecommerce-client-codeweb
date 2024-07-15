@@ -128,10 +128,12 @@
   
   .Title1 {
     color: hsl(0, 0%, 100%, 0.8);
+    font-size: 16px;
   }
   
   .Title2 {
     color: hsla(0, 0%, 100%, 0.4);
+    font-size: 16px;
   }
   
   .card-container {
@@ -183,9 +185,19 @@
   }
   
   .card:hover {
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0) ease-in-out;
+  }
+
+  .card {
+    transition: transform 1.2s;
   }
   
+  .card:hover,
+  .card.is-hovered {
+    transform: translate3d(0, 0, 0);
+    transition: transform 1.2s ease-in-out;
+  }
+    
   
   
   .layers {
