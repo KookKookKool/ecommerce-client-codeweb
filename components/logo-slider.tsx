@@ -207,7 +207,7 @@ const LogoCarousel: React.FC = () => {
                   </svg>
                 </li>
 
-                <li className="mr-1">
+                <li className="mr-4">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     x="0px"
