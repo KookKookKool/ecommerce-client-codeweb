@@ -43,13 +43,13 @@ const HomePage = async () => {
 
           <div className="my-4 pt-[88%] sm:pt-[42%]  md:pt-[40%] lg:pt-[38%] flex text-center justify-center gap-6 w-full md:w-auto">
             <Link href={"/service"}>
-              <Button className="text-[18px] font-bold px-8 md:px-16 py-4 md:py-6 rounded-full tracking-wide bg-primary hover:bg-red-900">
+              <Button className="xl:text-[20px] lg:text-[18px] font-bold px-8 md:px-16 py-4 md:py-6 rounded-xl tracking-wide bg-primary hover:bg-red-900">
                 บริการต่างๆ
               </Button>
             </Link>
             <Link href={"/about"}>
               <Button
-                className="text-[18px] font-bold px-8 md:px-16 py-4 md:py-6 rounded-full tracking-wide text-white"
+                className="xl:text-[20px] lg:text-[18px] font-bold px-8 md:px-16 py-4 md:py-6 rounded-xl tracking-wide text-white"
                 variant="outline"
               >
                 อ่านเพิ่มเติม
@@ -92,7 +92,7 @@ const HomePage = async () => {
           </h2>
           <div className="text-center mt-8 mb-4">
             <Link href="/blog">
-              <Button className=" text-[18px] px-8 py-4 md:px-6 md:py-2 rounded-full tracking-wide bg-primary hover:bg-red-900">
+              <Button className=" xl:text-[20px] lg:text-[18px] px-8 py-4 md:px-6 md:py-2 rounded-full tracking-wide bg-primary hover:bg-red-900">
                 อ่านเพิ่มเติม
               </Button>
             </Link>
@@ -104,8 +104,8 @@ const HomePage = async () => {
               <Link href={`/blog/${blog.id}`} key={blog.id}>
                 <div className="p-4 border rounded-lg cursor-pointer">
                   <Image src={blog.imageUrl} alt={blog.label} width={400} height={300} className="w-full h-48 object-cover rounded-md mb-4" />
-                  <h3 className="text-2xl font-bold mb-2">{blog.label}</h3>
-                  <p className="text-base text-Title2">
+                  <h3 className="xl:text-[20px] lg:text-[18px] font-bold mb-2">{blog.label}</h3>
+                  <p className="text-[16px] text-Title2">
                     {blog.ContentLabel.slice(0, 120)}{blog.ContentLabel.length > 120 && '...'}
                   </p>
                   <p className="text-base text-Title3">Date Posted: {blog.createdAt.toDate().toLocaleDateString()}</p>

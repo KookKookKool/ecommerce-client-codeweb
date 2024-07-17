@@ -95,7 +95,7 @@ function ContactForm() {
     <div className="relative isolate bg-background px-6 py-24 sm:py-32 lg:px-8 z-10">
       <Toaster />
       <div className="relative mx-auto max-w-2xl text-center z-20">
-        <h2 className="text-3xl font-bold tracking-tight text-Title sm:text-4xl">
+        <h2 className="text-2xl xl:text-[40px] lg:text-[38px] md:text-3xl font-bold tracking-tight text-Title ">
           Contact Us
         </h2>
       </div>

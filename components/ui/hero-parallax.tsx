@@ -105,10 +105,10 @@ export const HeroParallax = ({
 export const Header = () => {
   return (
     <div className="bg-background max-w-7xl md:max-w-5xl relative mx-auto py-20 md:py-40 mx-18 w-[100%] p-[44px] left-0 top-0">
-      <h1 className="text-2xl md:text-7xl font-bold dark:text-white">
+      <h1 className="text-2xl xl:text-[40px] lg:text-[38px] font-bold dark:text-white">
         About Us
       </h1>
-      <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200 my">
+      <p className="max-w-2xl xl:text-[20px] lg:text-[18px] text-base mt-8 dark:text-neutral-200 my">
       ที่โค้ดเว็บ เรามุ่งมั่นที่จะสร้างสรรค์เว็บไซต์ที่ไม่เพียงแต่สวยงามและทันสมัย แต่ยังใช้งานง่ายและตอบสนองความต้องการของผู้ใช้ทุกคน ด้วยทีมงานที่เชี่ยวชาญและมีประสบการณ์ เรามอบบริการที่ครบวงจร ตั้งแต่การออกแบบ UI/UX ที่ดึงดูดใจ ไปจนถึงการพัฒนาเว็บไซต์ที่มีประสิทธิภาพ เราเชื่อว่าเว็บไซต์ที่ดีไม่เพียงแต่สร้างความประทับใจแรกให้กับผู้เยี่ยมชม แต่ยังช่วยเพิ่มมูลค่าและเสริมสร้างความสำเร็จให้กับธุรกิจของคุณในโลกดิจิทัล.
       </p>
     </div>

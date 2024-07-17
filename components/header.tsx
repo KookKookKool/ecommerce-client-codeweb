@@ -10,6 +10,7 @@ import { UserButton, useClerk } from "@clerk/nextjs";
 import MainNav from "./main-nav";
 import CartActionButton from "./cart-action";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 interface HeaderProps {
   userId: string | null;
@@ -42,10 +43,10 @@ const Header = ({ userId }: HeaderProps) => {
         <div className="relative px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
           <Link
             href="/"
-            className="uppercase flex gap-x-2 font-bold text-primary text-lg md:text-xl"
+            // className="uppercase flex gap-x-2 font-bold text-primary text-lg md:text-xl"
             onClick={() => setMobileMenuOpen(false)}
           >
-            CodeWeb
+            <Image src="/CODEWEB_TEXT_LOGO.png" alt="logo" width={140} height={20} />
           </Link>
           <div className="flex lg:hidden">
             <UserButton afterSignOutUrl="/" />

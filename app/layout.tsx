@@ -5,8 +5,8 @@ import RootClientLayout from "./RootClientLayout";
 export const revalidate = 0;
 
 export const metadata: Metadata = {
-  title: "CODEWEB",
-  description: "Website Development",
+  title: "CodeWeb",
+  description: "รับทำเว็บไซต์ - Website Development",
 };
 
 export default function RootLayout({

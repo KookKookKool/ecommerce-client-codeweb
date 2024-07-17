@@ -28,15 +28,15 @@ export const PopularContent = ({ data }: PopularContentProps) => {
   return (
     <div className="flex flex-col w-full lg:w-[100%] min-w-[280px] px-6 pt-16 pb-8 bg-background2 items-center rounded-lg self-stretch hover:scale-105 hover:shadow-[0px_14px_28px_-5px_rgba(0,0,0,0.1)] transition-all duration-150 ease-in">
       <Link href={`/service/${data.id}`}>
-        <h2 className="text-center font-semibold text-lg tracking-wider text-Title mb-3 drop-shadow-[3px_3px_5px_rgba(91,91,91,0.58)] hover:text-primary">
+        <h2 className="text-center font-semibold xl:text-[20px] lg:text-[18px] text-base tracking-wider text-Title mb-3 drop-shadow-[3px_3px_5px_rgba(91,91,91,0.58)] hover:text-primary">
           {data.name}
         </h2>
       </Link>
       <p className="text-center tracking-tighter block mb-14">
-        <span className="text-4xl font-bold">{formattedPrice}</span>
+        <span className="text-2xl xl:text-[40px] lg:text-[38px] md:text-3xl font-bold">{formattedPrice}</span>
       </p>
       <button
-        className="w-full p-2 bg-background text-white rounded-md font-semibold hover:bg-[#FF0000] transition-all duration-150 ease-in mb-8 border-[#13181f]"
+        className="w-full p-2 xl:text-[20px] lg:text-[18px] bg-background text-white rounded-md font-semibold hover:bg-[#FF0000] transition-all duration-150 ease-in mb-8 border-[#13181f]"
         onClick={() => addToCart(data)}
       >
         Add to cart
@@ -55,7 +55,7 @@ export const PopularContent = ({ data }: PopularContentProps) => {
           )}
         </div>
       </ol>
-      <CardDescription className="text-left text-[16px] text-Title2 pl-[1.5rem] pr-[0.5rem] text-wrap my-3 w-[17rem] tracking-wider">
+      <CardDescription className="text-left text-[16px] text-Title2 pl-[1rem] pr-[1rem] text-wrap my-3 w-[17rem] tracking-wider">
         {data.Details.split("\n").map((line, index) => (
           <React.Fragment key={index}>
             {line}

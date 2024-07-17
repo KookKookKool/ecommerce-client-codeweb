@@ -127,7 +127,7 @@
   }
   
   .Title1 {
-    color: hsl(0, 0%, 100%, 0.8);
+    color: hsla(0, 0%, 100%, 0.8);
     font-size: 16px;
   }
   
@@ -135,6 +135,27 @@
     color: hsla(0, 0%, 100%, 0.4);
     font-size: 16px;
   }
+  
+  /* For large screens */
+  @media (min-width: 1024px) {
+    .Title1 {
+      font-size: 18px; /* lg:text-[18px] */
+    }
+    .Title2 {
+      font-size: 18px; /* lg:text-[18px] */
+    }
+  }
+  
+  /* For extra-large screens */
+  @media (min-width: 1280px) {
+    .Title1 {
+      font-size: 20px; /* xl:text-[20px] */
+    }
+    .Title2 {
+      font-size: 20px; /* xl:text-[20px] */
+    }
+  }
+  
   
   .card-container {
     display: flex;

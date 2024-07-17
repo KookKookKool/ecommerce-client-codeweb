@@ -23,7 +23,7 @@ const AllBlogsPage = async () => {
   return (
     <Container className="px-4 md:px-12">
       <section className="my-4 py-12 flex flex-col items-center justify-center">
-        <h2 className="text-5xl md:text-5xl font-bold tracking-wider uppercase text-Title my-4">
+        <h2 className="text-2xl xl:text-[40px] lg:text-[38px] md:text-3xl font-bold tracking-wider uppercase text-Title my-4">
           All Blogs
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

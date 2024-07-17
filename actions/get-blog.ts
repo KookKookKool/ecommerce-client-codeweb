@@ -1,3 +1,4 @@
+// actions/get-blog.ts
 import { Blog } from "@/types-db";
 import { Timestamp } from "firebase/firestore";
 
