@@ -1,4 +1,3 @@
-// [blogId]/page.tsx
 import React from "react";
 import { notFound } from "next/navigation";
 import Container from "@/components/container";
@@ -8,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { Timestamp } from "firebase/firestore";
+import sanitizeHtml from "sanitize-html"; // Import sanitizeHtml
 
 export const revalidate = 0;
 
@@ -32,32 +32,34 @@ const BlogDetailPage = async ({ params }: { params: { blogId: string } }) => {
   }
 
   const blogs: Blog[] = await getBlogs();
+  const createdAt = (blog.createdAt as Timestamp)?.toDate();
 
-  // แปลง createdAt เป็น Date
-  const createdAt = (blog.createdAt as Timestamp).toDate();
+  // Function to strip HTML tags from a string
+  const stripHtmlTags = (html: string): string => {
+    return sanitizeHtml(html, { allowedTags: [], allowedAttributes: {} });
+  };
 
   return (
     <Container className="px-4 md:px-12">
       <section className="my-4 py-12">
-        <h1 className="text-2xl text-center justify-center xl:text-[40px] lg:text-[38px] md:text-3xl font-bold tracking-wider uppercase text-Title my-4 ">
+        <h1 className="text-center text-4xl lg:text-5xl font-bold tracking-wider uppercase my-4">
           {blog.label}
         </h1>
         <Image
           src={blog.imageUrl}
           alt={blog.label}
-          width={1200} // Adjust accordingly
-          height={800} // Adjust accordingly
-          className="w-full h-[100%] object-cover rounded-md mb-8"
+          width={1200}
+          height={800}
+          className="w-full h-auto object-cover rounded-md mb-8"
         />
-        <p className="text-lg text-Title2">
-          {blog.ContentLabel.split("\n").map((line, index) => (
-            <React.Fragment key={index}>
-              {line}
-              <br />
-            </React.Fragment>
-          ))}
+        {/* Render ContentLabel with inner HTML */}
+        <div
+          className="prose prose-lg max-w-none blog-content"
+          dangerouslySetInnerHTML={{ __html: blog.ContentLabel }}
+        />
+        <p className="text-base text-gray-600">
+          Date Posted: {createdAt?.toLocaleDateString()}
         </p>
-        <p className="text-base text-Title2">Date Posted: {createdAt.toLocaleDateString()}</p>
 
         <div className="text-center mt-8">
           <Link href="/blog">
@@ -67,7 +69,7 @@ const BlogDetailPage = async ({ params }: { params: { blogId: string } }) => {
           </Link>
         </div>
         <div>
-          <h2 className="text-5xl md:text-5xl font-bold tracking-wider uppercase text-Title my-4">
+          <h2 className="text-4xl font-bold tracking-wider uppercase my-4">
             Our Blogs
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -77,14 +79,18 @@ const BlogDetailPage = async ({ params }: { params: { blogId: string } }) => {
                   <Image
                     src={blog.imageUrl}
                     alt={blog.label}
-                    width={400} // Adjust accordingly
-                    height={300} // Adjust accordingly
+                    width={400}
+                    height={300}
                     className="w-full h-48 object-cover rounded-md mb-4"
                   />
                   <h3 className="text-2xl font-bold mb-2">{blog.label}</h3>
+                  <p className="text-base text-gray-600">
+                    {/* Strip HTML tags and truncate the text */}
+                    {stripHtmlTags(blog.ContentLabel).slice(0, 120)}
+                    {stripHtmlTags(blog.ContentLabel).length > 120 && "..."}
+                  </p>
                   <p className="text-base text-Title2">
-                    {blog.ContentLabel.slice(0, 120)}
-                    {blog.ContentLabel.length > 120 && "..."}
+                    Date Posted: {createdAt?.toLocaleDateString()}
                   </p>
                 </div>
               </Link>
