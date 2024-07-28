@@ -43,11 +43,10 @@ const AllBlogsPage = async () => {
                 />
                 <h3 className="text-2xl font-bold mb-2">{blog.label}</h3>
                 <h2 className="text-base text-Title2">
-                  {/* Strip HTML tags and truncate the text */}
                   {stripHtmlTags(blog.ContentLabel).slice(0, 120)}
                   {stripHtmlTags(blog.ContentLabel).length > 120 && '...'}
                 </h2>
-                <p className="text-base text-Title2">
+                <p className="text-base text-grey-600">
                   Date Posted: {blog.createdAt.toLocaleDateString()}
                 </p>
               </div>

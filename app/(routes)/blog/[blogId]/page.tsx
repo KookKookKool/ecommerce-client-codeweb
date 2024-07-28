@@ -84,12 +84,12 @@ const BlogDetailPage = async ({ params }: { params: { blogId: string } }) => {
                     className="w-full h-48 object-cover rounded-md mb-4"
                   />
                   <h3 className="text-2xl font-bold mb-2">{blog.label}</h3>
-                  <p className="text-base text-gray-600">
+                  <p className="text-base text-Title2">
                     {/* Strip HTML tags and truncate the text */}
                     {stripHtmlTags(blog.ContentLabel).slice(0, 120)}
                     {stripHtmlTags(blog.ContentLabel).length > 120 && "..."}
                   </p>
-                  <p className="text-base text-Title2">
+                  <p className="text-base text-grey-600">
                     Date Posted: {createdAt?.toLocaleDateString()}
                   </p>
                 </div>

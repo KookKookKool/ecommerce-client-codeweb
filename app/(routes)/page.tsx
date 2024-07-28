@@ -10,6 +10,8 @@ import getBlogs from "@/actions/get-blog";
 import { Blog, Product } from "@/types-db";
 import LogoCarousel from "@/components/logo-slider";
 import Image from "next/image";
+import sanitizeHtml from "sanitize-html";
+
 
 export const revalidate = 0;
 
@@ -24,6 +26,11 @@ const HomePage = async () => {
   const blogs: Blog[] = await getBlogs();
   // Sort blogs by creation date
   const sortedBlogs = blogs.sort((a, b) => b.createdAt.toDate().getTime() - a.createdAt.toDate().getTime());
+
+    // Function to strip HTML tags from a string
+    const stripHtmlTags = (html: string): string => {
+      return sanitizeHtml(html, { allowedTags: [], allowedAttributes: {} });
+    };
 
   return (
     <>
@@ -102,14 +109,21 @@ const HomePage = async () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {sortedBlogs.slice(0, 3).map((blog) => (
               <Link href={`/blog/${blog.id}`} key={blog.id}>
-                <div className="p-4 border rounded-lg cursor-pointer">
-                  <Image src={blog.imageUrl} alt={blog.label} width={400} height={300} className="w-full h-48 object-cover rounded-md mb-4" />
-                  <h3 className="xl:text-[20px] lg:text-[18px] font-bold mb-2">{blog.label}</h3>
-                  <p className="text-[16px] text-Title2">
-                    {blog.ContentLabel.slice(0, 120)}{blog.ContentLabel.length > 120 && '...'}
-                  </p>
-                  <p className="text-base text-Title3">Date Posted: {blog.createdAt.toDate().toLocaleDateString()}</p>
-                </div>
+ <div className="p-4 border rounded-lg cursor-pointer">
+                <Image 
+                  src={blog.imageUrl} 
+                  alt={blog.label} 
+                  width={400} 
+                  height={300} 
+                  className="w-full h-48 object-cover rounded-md mb-4" 
+                />
+                <h3 className="text-2xl font-bold mb-2">{blog.label}</h3>
+                <h2 className="text-base text-Title2">
+                  {stripHtmlTags(blog.ContentLabel).slice(0, 120)}
+                  {stripHtmlTags(blog.ContentLabel).length > 120 && '...'}
+                </h2>
+                <p className="text-base text-grey-600">Date Posted: {blog.createdAt.toDate().toLocaleDateString()}</p>
+              </div>
               </Link>
             ))}
           </div>
