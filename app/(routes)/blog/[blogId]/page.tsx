@@ -34,6 +34,16 @@ const BlogDetailPage = async ({ params }: { params: { blogId: string } }) => {
   const blogs: Blog[] = await getBlogs();
   const createdAt = (blog.createdAt as Timestamp)?.toDate();
 
+  const sortedBlogs = blogs
+    .map(blog => ({
+      ...blog,
+      createdAt: (blog.createdAt as Timestamp).toDate()
+    }))
+    .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+
+  // Filter out the current blog from the sortedBlogs
+  const otherBlogs = sortedBlogs.filter(b => b.id !== blogId);
+
   // Function to strip HTML tags from a string
   const stripHtmlTags = (html: string): string => {
     return sanitizeHtml(html, { allowedTags: [], allowedAttributes: {} });
@@ -73,7 +83,8 @@ const BlogDetailPage = async ({ params }: { params: { blogId: string } }) => {
             Our Blogs
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {blogs.slice(0, 3).map((blog) => (
+            {/* Display the first 3 blogs in otherBlogs */}
+            {otherBlogs.slice(0, 3).map((blog) => (
               <Link href={`/blog/${blog.id}`} key={blog.id}>
                 <div className="p-4 border rounded-lg cursor-pointer">
                   <Image

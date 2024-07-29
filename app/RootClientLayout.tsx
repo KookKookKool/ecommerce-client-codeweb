@@ -24,7 +24,7 @@ export default function RootClientLayout({ children, userId }: { children: React
           {children}
           <Footer />
         </body>
-        <GoogleAnalytics gaId="G-QMZTK1BKPE" />
+        <GoogleAnalytics gaId="G-QMZTK1BKPE"/>
       </html>
     </ClerkProvider>
   );
