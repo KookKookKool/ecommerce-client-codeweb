@@ -21,6 +21,8 @@ function Footer() {
         <Image src="https://img.icons8.com/?size=48&id=YFbzdUk7Q3F8&format=png" alt="Facebook Icon" width={48} height={48}/>
     </a>
 </div>
+<Image className="mx-auto justify-center items-center" src="/dbd-logo.png" alt="DBD ICO" width={120} height={48}/>
+
 <p className="text-center pb-12 text-gray-700 font-medium">&copy; 2024 CodeWeb Company. All rights reserved.</p>
 </footer>
   );

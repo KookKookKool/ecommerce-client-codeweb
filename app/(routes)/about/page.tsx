@@ -101,11 +101,6 @@ export default function About() {
   return (
     <div className="flex flex-col items-center">
       <HeroParallax products={products} />
-      <Link href={"/service"}>
-      <Button className="xl:text-[20px] lg:text-[18px] mb-4 font-bold px-8 md:px-16 py-4 md:py-6 rounded-xl tracking-wide bg-primary hover:bg-red-900">
-        บริการต่างๆ
-      </Button>
-      </Link>
     </div>
   );
 }
