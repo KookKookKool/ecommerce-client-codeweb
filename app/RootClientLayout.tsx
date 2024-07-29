@@ -20,7 +20,7 @@ export default function RootClientLayout({ children, userId }: { children: React
     // Add gtag.js script to the document head if not already added
     if (!window.gtagScriptAdded) {
       const script = document.createElement('script');
-      script.src = `https://www.googletagmanager.com/gtag/js?id=G-QMZTK1BKPE`;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=G-QMZTK1BKPE";
       script.async = true;
       document.head.appendChild(script);
 
