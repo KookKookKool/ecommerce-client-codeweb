@@ -1,9 +1,7 @@
-// app\RootClientLayout.tsx
 "use client";
 
 import { useEffect } from 'react';
-import { usePathname } from 'next/navigation'; // ใช้ usePathname แทน useRouter
-import { initGA, logPageView } from '../utils/analytics';
+import { usePathname } from 'next/navigation';
 import { ClerkProvider } from "@clerk/nextjs";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
@@ -13,18 +11,38 @@ import { Urbanist } from "next/font/google";
 
 import "./globals.css";
 
-const urbanist = Urbanist({ subsets: ["latin"], variable : "--font-urbanist" });
+const urbanist = Urbanist({ subsets: ["latin"], variable: "--font-urbanist" });
 
-export default function RootClientLayout({ children, userId }: { children: React.ReactNode, userId: string | null }) {
+export default function RootClientLayout({ children, userId }: { children: React.ReactNode; userId: string | null }) {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (!window.GA_INITIALIZED) {
-      initGA();
-      window.GA_INITIALIZED = true;
+    // Add gtag.js script to the document head if not already added
+    if (!window.gtagScriptAdded) {
+      const script = document.createElement('script');
+      script.src = `https://www.googletagmanager.com/gtag/js?id=G-QMZTK1BKPE`;
+      script.async = true;
+      document.head.appendChild(script);
+
+      script.onload = () => {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(...args: any[]) { window.dataLayer?.push(args); }
+        window.gtag = gtag;
+        window.gtag('js', new Date());
+        window.gtag('config', 'G-QMZTK1BKPE');
+      };
+
+      window.gtagScriptAdded = true;
     }
-    logPageView();
-  }, [pathname]); 
+
+    // Track page view with gtag
+    if (window.gtag) {
+      window.gtag('config', 'G-QMZTK1BKPE', {
+        page_path: pathname,
+      });
+    }
+  }, [pathname]);
+
   return (
     <ClerkProvider>
       <html lang="en">

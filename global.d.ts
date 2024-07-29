@@ -1,9 +1,18 @@
-// สร้างไฟล์ global.d.ts ใน root ของโปรเจกต์ของคุณ
+// types/global.d.ts
 declare global {
-    interface Window {
-      GA_INITIALIZED?: boolean;
-    }
+  interface Window {
+    gtag: (...args: any[]) => void;
+    gtagScriptAdded: boolean;
   }
-  
-  export {};
-  
+}
+
+// Define the gtag function type
+type GtagFunction = (...args: any[]) => void;
+
+// Extend the Window interface to include gtag and other properties
+interface Window {
+  gtag?: GtagFunction;
+  gtagScriptAdded?: boolean;
+  dataLayer?: any[];
+}
+
