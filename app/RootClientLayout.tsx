@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import { Urbanist } from "next/font/google";
 import { GoogleAnalytics } from '@next/third-parties/google'
 import "./globals.css";
+import FacebookMsg from "@/components/facebookMsg";
 
 const urbanist = Urbanist({ subsets: ["latin"], variable: "--font-urbanist" });
 
@@ -21,6 +22,7 @@ export default function RootClientLayout({ children, userId }: { children: React
         <body className={cn("bg-background antialiased", urbanist.variable)}>
           <ToastProvider />
           <Header userId={userId} />
+          <FacebookMsg /> {/* ใช้เป็น Component */}
           {children}
           <Footer />
         </body>
